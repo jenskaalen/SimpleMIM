@@ -1,0 +1,26 @@
+﻿[
+    {
+        "MAName": "HR MA",
+        "ProvisionRule": {
+            "AttributeRules": [
+                {
+                    "Attribute": "uid",
+                    "IsPresent": true,
+                    "RequiredValue": "testman"
+                }
+            ],
+            "RequiredAgents": [ "Users MA" ]
+        }
+    },
+    {
+        "MAName": "Users MA",
+        "ProvisionRule": {
+            "AttributeRules": [
+                {
+                    "Attribute": "employeeID",
+                    "IsPresent": true
+                }
+            ]
+        }
+    }
+]

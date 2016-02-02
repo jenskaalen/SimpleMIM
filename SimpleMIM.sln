@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMIM.Provision", "Simp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMIM.Tests", "SimpleMIM.Tests\SimpleMIM.Tests.csproj", "{E3466BC0-4767-460B-BF72-533B59A2B6FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMIM.Router", "SimpleMIM.Router\SimpleMIM.Router.csproj", "{C634474A-98E2-483B-9EC1-41E408918EC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E3466BC0-4767-460B-BF72-533B59A2B6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3466BC0-4767-460B-BF72-533B59A2B6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3466BC0-4767-460B-BF72-533B59A2B6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C634474A-98E2-483B-9EC1-41E408918EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C634474A-98E2-483B-9EC1-41E408918EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C634474A-98E2-483B-9EC1-41E408918EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C634474A-98E2-483B-9EC1-41E408918EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

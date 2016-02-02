@@ -45,6 +45,22 @@ namespace MIMSimplifier.Tests
         }
 
         [TestMethod]
+        public void SimpleRuleSolver_solves_ObjectRequirement()
+        {
+            var correctRule = new ProvisionRule();
+            var wrongRule = new ProvisionRule();
+            var mventry = new MockMventry("TestObj");
+
+            wrongRule.RequiredObjects = new[] { "WrongObj" };
+            correctRule.RequiredObjects = new[] { "TestObj" };
+
+            var ruleSolver = new SimpleRuleSolver(wrongRule);
+            Assert.IsFalse(ruleSolver.PassesRule(mventry));
+            ruleSolver = new SimpleRuleSolver(correctRule);
+            Assert.IsTrue(ruleSolver.PassesRule(mventry));
+        }
+
+        [TestMethod]
         public void SimpleRuleSolver_solves_AgentRequirement()
         {
             var mventry = new MockMventry();

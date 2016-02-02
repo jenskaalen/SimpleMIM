@@ -1,4 +1,5 @@
-﻿using Microsoft.MetadirectoryServices;
+﻿using System.Linq;
+using Microsoft.MetadirectoryServices;
 using SimpleMIM.Provision.Rules;
 
 namespace SimpleMIM.Provision.Solvers
@@ -14,11 +15,15 @@ namespace SimpleMIM.Provision.Solvers
         
         public bool PassesRule(MVEntry mventry)
         {
-            bool passesAttributeRules = PassesAttributeRules(mventry);
+            return PassesObjectRules(mventry) && CheckAgentRequirements(mventry) && PassesAttributeRules(mventry);
+        }
 
-            bool passesAgentRequirements = CheckAgentRequirements(mventry);
+        private bool PassesObjectRules(MVEntry mventry)
+        {
+            if (Rule.RequiredObjects == null || Rule.RequiredObjects.Length <= 0)
+                return true;
 
-            return passesAttributeRules && passesAgentRequirements;
+            return Rule.RequiredObjects.Contains(mventry.ObjectType);
         }
 
 

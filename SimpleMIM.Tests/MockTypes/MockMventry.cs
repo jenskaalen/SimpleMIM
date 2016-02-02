@@ -16,6 +16,13 @@ namespace MIMSimplifier.Tests
             ConnectedMAs = new MockMACollection();
         }
 
+        public MockMventry(string objectType)
+        {
+            ObjectType = objectType;
+            _attributes = new Dictionary<string, MockAttrib>();
+            ConnectedMAs = new MockMACollection();
+        }
+
         public override AttributeNameEnumerator GetEnumerator()
         {
             throw new NotImplementedException();

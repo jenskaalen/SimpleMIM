@@ -51,6 +51,9 @@ namespace SimpleMIM.Provision.Solvers
 
             foreach (var rule in Rule.AttributeRules)
             {
+                if (!mventry[rule.Attribute].IsPresent)
+                    return false;
+
                 if (rule.IsPresent != null && rule.IsPresent != mventry[rule.Attribute].IsPresent)
                     return false;
 
@@ -61,8 +64,6 @@ namespace SimpleMIM.Provision.Solvers
                     if (!valueMatches)
                         return false;
                 }
-
-                return true;
             }
 
             return true;

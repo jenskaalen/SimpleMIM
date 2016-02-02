@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.MetadirectoryServices;
 using SimpleMIM.Provision.Rules;
@@ -58,10 +59,11 @@ namespace SimpleMIM.Provision
 
             foreach (AdvancedAttributeSetter attributeSetter in AdvancedAttributeSetters)
             {
-                Attrib[] mvAttributes = attributeSetter.MVAttributes.Select(attribName => mventry[attribName]).ToArray();
-
-                csentry[attributeSetter.CSAttribute].Value =
-                    AttributeFormatter.FormatAttribute(attributeSetter.ReplaceFormat, mvAttributes);
+                string value = AttributeFormatter.FormatValue(mventry, attributeSetter.ReplaceFormat);
+                if (attributeSetter.CSAttribute.ToLower() == "dn")
+                    csentry.DN = mventry.ConnectedMAs[MAName].CreateDN(value);
+                else 
+                    csentry[attributeSetter.CSAttribute].Value = value;
             }
 
             csentry.CommitNewConnector();

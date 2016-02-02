@@ -18,13 +18,12 @@ namespace MIMSimplifier.Tests
         {
             string replaceFormat = @"CN=[displayName],OU=Auto Users,OU=Employees,OU=[department],DC=TEST,DC=INT";
             const string expectedResult = @"CN=Test mannen,OU=Auto Users,OU=Employees,OU=Test Department,DC=TEST,DC=INT";
+            
+            var mventry = new MockMventry();
+            mventry["displayName"].Value = "Test mannen";
+            mventry["department"].Value = "Test Department";
 
-            Attrib displayName = new MockAttrib("displayName");
-            displayName.Value = "Test mannen";
-            Attrib department = new MockAttrib("department");
-            department.Value = "Test Department";
-
-            string result = AttributeFormatter.FormatAttribute(replaceFormat, displayName, department);
+            string result = AttributeFormatter.FormatValue(mventry, replaceFormat);
             Assert.AreEqual(expectedResult, result);
         }
     }

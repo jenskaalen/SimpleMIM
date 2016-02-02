@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.MetadirectoryServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleMIM.Provision;
 using SimpleMIM.Provision.Rules;
@@ -18,6 +19,7 @@ namespace MIMSimplifier.Tests
         {
             var mventry = new MockMventry();
             mventry["uid"].Value = "espenaske";
+            mventry["givenName"].Value = "per";
 
 
             var attributeRule = new AttributeRule()
@@ -27,8 +29,15 @@ namespace MIMSimplifier.Tests
                 RequiredValue = "espenaske"
             };
 
+            var attributeRule2 = new AttributeRule()
+            {
+                Attribute = "givenName",
+                RequiredValue = "per"
+            };
+
+
             var provRule = new ProvisionRule();
-            provRule.AttributeRules = new[] { attributeRule };
+            provRule.AttributeRules = new[] { attributeRule, attributeRule2 };
 
             var ruleSolver = new SimpleRuleSolver(provRule);
             bool solved = ruleSolver.PassesRule(mventry);

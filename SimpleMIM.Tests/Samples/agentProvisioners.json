@@ -21,6 +21,13 @@
                     "IsPresent": true
                 }
             ]
-        }
+        },
+        "AdvancedAttributeSetters": [
+            {
+                "CSAttribute": "csDN",
+                "ReplaceFormat": "",
+                "MVAttributes": [ "displayName", "department" ]
+            }
+        ]
     }
 ]

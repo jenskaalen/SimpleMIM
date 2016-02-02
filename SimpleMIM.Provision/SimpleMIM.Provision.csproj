@@ -47,9 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvancedAttributeSetter.cs" />
     <Compile Include="AgentProvisioner.cs" />
+    <Compile Include="AttributeFormatter.cs" />
     <Compile Include="ConfigLoaders\AgentProvisionerLoader.cs" />
     <Compile Include="ConfigLoaders\IAgentProvisionerLoader.cs" />
+    <Compile Include="SimpleAttributeSetter.cs" />
     <Compile Include="Rules\AttributeRule.cs" />
     <Compile Include="Solvers\IRuleSolver.cs" />
     <Compile Include="Rules\MimRuleSolver.cs" />

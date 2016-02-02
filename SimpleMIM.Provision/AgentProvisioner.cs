@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.MetadirectoryServices;
@@ -13,23 +13,28 @@ namespace SimpleMIM.Provision
     {
         private IRuleSolver _ruleSolver;
 
-        public AgentProvisioner(string maName, string provisionedObjectType,  ProvisionRule provisionRule, ProvisionSetter[] provisionSetters)
+        public AgentProvisioner(string maName, string provisionedObjectType,  ProvisionRule provisionRule, SimpleAttributeSetter[] simpleAttributeSetters, AdvancedAttributeSetter[] advancedAttributeSetters)
         {
             MAName = maName;
             ProvisionedObjectType = provisionedObjectType;
             ProvisionRule = provisionRule;
             _ruleSolver = new SimpleRuleSolver(ProvisionRule);
-            ProvisionSetters = provisionSetters;
+            SimpleAttributeSetters = simpleAttributeSetters;
+            AdvancedAttributeSetters = advancedAttributeSetters;
 
-            if (provisionSetters == null)
-                ProvisionSetters = new ProvisionSetter[0];
+            if (simpleAttributeSetters == null)
+                SimpleAttributeSetters = new SimpleAttributeSetter[0];
+
+            if (advancedAttributeSetters == null)
+                AdvancedAttributeSetters = new AdvancedAttributeSetter[0];
         }
 
         public string MAName { get; }
         //TODO can maybe be private
         public ProvisionRule ProvisionRule { get; }
         public string ProvisionedObjectType { get; }
-        public ProvisionSetter[] ProvisionSetters { get; }
+        public SimpleAttributeSetter[] SimpleAttributeSetters { get; }
+        public AdvancedAttributeSetter[] AdvancedAttributeSetters { get; }
 
         public bool PassesProvisionCriteria(MVEntry mventry)
         {
@@ -46,18 +51,20 @@ namespace SimpleMIM.Provision
             CSEntry csentry = mventry.ConnectedMAs[MAName].Connectors.StartNewConnector(
                 ProvisionedObjectType);
 
-            foreach (var provisionSetter in ProvisionSetters)
+            foreach (var provisionSetter in SimpleAttributeSetters)
             {
                 csentry[provisionSetter.CSAttribute].Value = mventry[provisionSetter.MVAttribute].Value;
             }
 
+            foreach (AdvancedAttributeSetter attributeSetter in AdvancedAttributeSetters)
+            {
+                Attrib[] mvAttributes = attributeSetter.MVAttributes.Select(attribName => mventry[attribName]).ToArray();
+
+                csentry[attributeSetter.CSAttribute].Value =
+                    AttributeFormatter.FormatAttribute(attributeSetter.ReplaceFormat, mvAttributes);
+            }
+
             csentry.CommitNewConnector();
         }
-    }
-
-    public class ProvisionSetter
-    {
-        public string MVAttribute { get; set; }
-        public string CSAttribute { get; set; }
     }
 }

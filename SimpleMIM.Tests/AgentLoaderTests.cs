@@ -22,6 +22,7 @@ namespace MIMSimplifier.Tests
             AgentProvisioner[] provisioners = loader.LoadAgentProvisioners(json);
 
             Assert.AreEqual(2, provisioners.Length);
+            Assert.IsTrue(provisioners[1].AdvancedAttributeSetters.Length >= 1);
         }
     }
 }

@@ -58,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AgentLoaderTests.cs" />
+    <Compile Include="AttributeSetting.cs" />
     <Compile Include="MockTypes\MockAttrib.cs" />
     <Compile Include="MockTypes\MockConnectors.cs" />
     <Compile Include="MockTypes\MockCsentry.cs" />

@@ -39,6 +39,9 @@ namespace SimpleMIM.Provision
         {
             foreach (AgentProvisioner provisioner in _agentProvisioners)
             {
+                if (!provisioner.HandledObjectTypes.Contains(mventry.ObjectType))
+                    continue;
+
                 bool passesCriteria = provisioner.PassesProvisionCriteria(mventry);
                 ProvisionState state = GetProvisionState(mventry, provisioner.MAName, passesCriteria);
 

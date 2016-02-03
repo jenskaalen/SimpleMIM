@@ -14,7 +14,7 @@ namespace SimpleMIM.Provision
     {
         private IRuleSolver _ruleSolver;
 
-        public AgentProvisioner(string maName, string provisionedObjectType,  ProvisionRule provisionRule, SimpleAttributeSetter[] simpleAttributeSetters, AdvancedAttributeSetter[] advancedAttributeSetters)
+        public AgentProvisioner(string maName, string provisionedObjectType,  ProvisionRule provisionRule, SimpleAttributeSetter[] simpleAttributeSetters, AdvancedAttributeSetter[] advancedAttributeSetters, string[] handledObjectTypes)
         {
             MAName = maName;
             ProvisionedObjectType = provisionedObjectType;
@@ -22,12 +22,16 @@ namespace SimpleMIM.Provision
             _ruleSolver = new SimpleRuleSolver(ProvisionRule);
             SimpleAttributeSetters = simpleAttributeSetters;
             AdvancedAttributeSetters = advancedAttributeSetters;
+            HandledObjectTypes = handledObjectTypes;
 
             if (simpleAttributeSetters == null)
                 SimpleAttributeSetters = new SimpleAttributeSetter[0];
 
             if (advancedAttributeSetters == null)
                 AdvancedAttributeSetters = new AdvancedAttributeSetter[0];
+
+            if (HandledObjectTypes == null)
+                HandledObjectTypes = new string[0];
         }
 
         public string MAName { get; }
@@ -36,6 +40,7 @@ namespace SimpleMIM.Provision
         public string ProvisionedObjectType { get; }
         public SimpleAttributeSetter[] SimpleAttributeSetters { get; }
         public AdvancedAttributeSetter[] AdvancedAttributeSetters { get; }
+        public string[] HandledObjectTypes { get; set; }
 
         public bool PassesProvisionCriteria(MVEntry mventry)
         {

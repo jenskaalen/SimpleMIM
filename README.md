@@ -75,7 +75,7 @@ Expression: One-line python expression which sets the target to computed value.
 ExpressionType: Only Python is supported.  
 Target: The name of the target-attribute. Csentry-attribute for export and mventry for import.  
 
-## Misc## 
+## Misc ##
 
 
 ### Plans for the future ###

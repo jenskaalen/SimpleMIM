@@ -1,0 +1,11 @@
+﻿[
+    {
+        "Id":  "TravelPortalPersonProv",
+        "Agent": "TravelPortal MA",
+        "RuleType": "Python",
+        "Condition": "entry['FirstName'].Value == 'per'",
+        "SourceObject": "person",
+        "TargetObject": "TravelUser",
+        "InitialFlows": [ "TravelUserId" ]
+    }
+]

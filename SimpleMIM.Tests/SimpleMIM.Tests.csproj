@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.MetadirectoryServicesEx">
       <HintPath>..\_References\Microsoft.MetadirectoryServicesEx.dll</HintPath>
     </Reference>
@@ -66,6 +67,8 @@
     <Compile Include="MockTypes\MockMventry.cs" />
     <Compile Include="MockTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PythonFlowRules.cs" />
+    <Compile Include="PythonProvRules.cs" />
     <Compile Include="RuleParseTests.cs" />
     <Compile Include="RuleTests.cs" />
   </ItemGroup>
@@ -74,8 +77,22 @@
     <None Include="Samples\agentProvisioners.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Samples\pyProvRules.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Samples\pyFlowRules.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SimpleMIM.Flow\SimpleMIM.Flow.csproj">
+      <Project>{5DB43540-549B-4049-BF6E-70A9FA7C09A2}</Project>
+      <Name>SimpleMIM.Flow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleMIM.ProvisionExt\SimpleMIM.ProvisionExt.csproj">
+      <Project>{a0a0ea99-f133-4225-823f-acfbf265939d}</Project>
+      <Name>SimpleMIM.ProvisionExt</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SimpleMIM.Provision\SimpleMIM.Provision.csproj">
       <Project>{31A3A770-3D08-4737-8025-FA0013EA30B7}</Project>
       <Name>SimpleMIM.Provision</Name>

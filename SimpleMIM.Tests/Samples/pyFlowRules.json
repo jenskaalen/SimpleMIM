@@ -1,0 +1,14 @@
+﻿[
+    {
+        "Name": "LowerCaser",
+        "Expression": "entry['FirstName'].Value.lower() + ' ' + entry['LastName'].Value.lower()",
+        "ExpressionType": "Python",
+        "Target": "DisplayName"
+    } ,
+    {
+        "Name": "UpperCaser",
+        "Expression": "entry['FirstName'].Value.upper() + ' ' + entry['LastName'].Value.upper()",
+        "ExpressionType": "Python",
+        "Target": "DisplayName"
+    } 
+]

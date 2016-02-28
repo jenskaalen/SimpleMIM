@@ -3,7 +3,7 @@
         "Id":  "TravelPortalPersonProv",
         "Agent": "TravelPortal MA",
         "RuleType": "Python",
-        "Condition": "entry['FirstName'].Value == 'per'",
+      "Condition": "\tif entry['FirstName'].Value == 'per':\n\t\treturn True\n\telse:\n\t\treturn False",
         "SourceObject": "person",
         "TargetObject": "TravelUser",
         "InitialFlows": [ "TravelUserId" ]

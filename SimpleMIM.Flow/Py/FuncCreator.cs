@@ -9,15 +9,24 @@ namespace SimpleMIM.Flow.Py
         /// </summary>
         /// <param name="name"></param>
         /// <param name="variablesString">Ex "varA, varB"</param>
-        /// <param name="oneLineExpression"></param>
+        /// <param name="expression"></param>
         /// <returns></returns>
-        public static string GenerateFunction(string name, string variablesString, string oneLineExpression)
+        public static string GenerateFunction(string name, string variablesString, string expression)
         {
-            const string funcTemplate =
-@"def {0}({1}):
+            if (expression.IndexOf("\n", StringComparison.Ordinal) > -1)
+            {
+                const string multilineFuncTemplate =
+                    "def {0}({1}):\n{2}";
+                return String.Format(multilineFuncTemplate, name, variablesString, expression);
+            }
+            else
+            {
+                const string funcTemplate =
+    @"def {0}({1}):
     return {2}";
 
-            return String.Format(funcTemplate, name, variablesString, oneLineExpression);
+                return String.Format(funcTemplate, name, variablesString, expression);
+            }
         }
     }
 }

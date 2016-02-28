@@ -43,13 +43,14 @@ The following file must be created: C:\config\provRules.json.
 ]
 ```
 
-Id: The unique ID. Cannot contain spaces. 
-Agent: Management agent name
-RuleType: Only Python is supported.
-Condition: One-lined conditional in python.
-SourceObject: MVEntry object type 
-TargetObject: Object type in management agent 
+Id: The unique ID. Cannot contain spaces.  
+Agent: Management agent name.  
+RuleType: Only Python is supported.  
+Condition: One-lined conditional in python.  
+SourceObject: MVEntry object type.  
+TargetObject: Object type in management agent.   
 InitialFlows: Upon provisioning, these flowrules (must match existing flow rules) will be applied to the new csentry object before commiting it.  
+  
 
 ### Flow rules ###
 In the (advanced) attribute flow, the name of the flow must be equal to the "Name" property and the target attribute of the flow must match the "Target" property.  
@@ -75,11 +76,11 @@ ExpressionType: Only Python is supported.
 Target: The name of the target-attribute. Csentry-attribute for export and mventry for import. 
 
 ### Plans for the future ###
-* Supporting multiple lines of python logic
-* Loading entire script files of python to have at your beck and call 
-* Simple, non-python, configurable string manipulation for performance reasons 
-* Overhaul of term usage
-* Setting ReferenceDn property of csentries (for AD MAs)
+* Supporting multiple lines of python logic.  
+* Loading entire script files of python to have at your beck and call.  
+* Simple, non-python, configurable string manipulation for performance reasons.   
+* Overhaul of term usage.  
+* Setting ReferenceDn property of csentries (for AD MAs).  
 
 ### Contact ###
 

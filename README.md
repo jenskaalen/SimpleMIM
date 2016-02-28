@@ -77,6 +77,9 @@ Target: The name of the target-attribute. Csentry-attribute for export and mvent
 
 ## Misc ##
 
+### Project dependencies ###
+IronPython  
+Newtonsoft.Json  
 
 ### Plans for the future ###
 * Supporting multiple lines of python logic.  

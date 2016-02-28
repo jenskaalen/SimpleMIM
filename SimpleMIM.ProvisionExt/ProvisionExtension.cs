@@ -17,6 +17,9 @@ namespace SimpleMIM.ProvisionExt
         {
             foreach (var provRule in Rules.ProvisionRules)
             {
+                if (provRule.SourceObject != mventry.ObjectType)
+                    continue;
+
                 bool passes = ProvisionEval.PassesCondition(provRule, mventry);
 
                 if (passes)
@@ -31,9 +34,9 @@ namespace SimpleMIM.ProvisionExt
                         csentry.CommitNewConnector();
                     }
                 }
-                else
+                else if (provRule.Deprovision)
                 {
-                    //deprovision?
+                    mventry.ConnectedMAs[provRule.Agent].Connectors.DeprovisionAll();
                 }
             }
         }

@@ -70,10 +70,13 @@ The following file must be created: C:\config\flowRules.json.
 ]
 ```
 
-Name: The unique name. Can not contain spaces. 
-Expression: One-line python expression which sets the target to computed value. 
-ExpressionType: Only Python is supported. 
-Target: The name of the target-attribute. Csentry-attribute for export and mventry for import. 
+Name: The unique name. Can not contain spaces.  
+Expression: One-line python expression which sets the target to computed value.  
+ExpressionType: Only Python is supported.  
+Target: The name of the target-attribute. Csentry-attribute for export and mventry for import.  
+
+## Misc## 
+
 
 ### Plans for the future ###
 * Supporting multiple lines of python logic.  

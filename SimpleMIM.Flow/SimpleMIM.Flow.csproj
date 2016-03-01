@@ -49,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FlowRule.cs" />
+    <Compile Include="Data\IFlowRuleRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleEval.cs" />
     <Compile Include="RulesExtension.cs" />
-    <Compile Include="RuleLoading\FileRuleLoader.cs" />
-    <Compile Include="RuleLoading\IRuleLoader.cs" />
+    <Compile Include="Data\FileFlowRuleRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

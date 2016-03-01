@@ -6,21 +6,21 @@ using System.Text;
 using Newtonsoft.Json;
 using SimpleMIM.PythonConfiguration.Py;
 
-namespace SimpleMIM.ProvisionExt.ProvisionRuleLoading
+namespace SimpleMIM.ProvisionExt.Data
 {
-    public class FileProvRuleLoader : IRuleLoader
+    public class FileProvRuleRepo : IProvisionRuleRepo
     {
-        private string _filename;
+        private readonly string _filename;
 
-        public FileProvRuleLoader(string filename)
+        public FileProvRuleRepo(string filename)
         {
             _filename = filename;
         }
-        
-        public List<ProvisionRule> LoadRules()
+
+        public List<ProvisionRule> GetAllRules()
         {
             var flowRules = new List<ProvisionRule>();
-            
+
             string rulesText = File.ReadAllText(_filename);
             List<ProvisionRule> flowRulesFromFile = JsonConvert.DeserializeObject<List<ProvisionRule>>(rulesText);
             flowRules.AddRange(flowRulesFromFile);
@@ -37,6 +37,11 @@ namespace SimpleMIM.ProvisionExt.ProvisionRuleLoading
             Core.RegisterProvisionScript(scriptBuilder.ToString());
 
             return flowRules;
+        }
+
+        public void SaveRule(ProvisionRule rule)
+        {
+            throw new NotImplementedException();
         }
     }
 }

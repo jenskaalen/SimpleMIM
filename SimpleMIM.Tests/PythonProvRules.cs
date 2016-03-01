@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.MetadirectoryServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MIMSimplifier.Tests.MockTypes;
-using SimpleMIM.Flow.RuleLoading;
+using SimpleMIM.Flow.Data;
 using SimpleMIM.ProvisionExt;
-using SimpleMIM.ProvisionExt.ProvisionRuleLoading;
+using SimpleMIM.ProvisionExt.Data;
 using SimpleMIM.PythonConfiguration.Py;
 using RuleType = SimpleMIM.ProvisionExt.RuleType;
 
@@ -48,8 +48,8 @@ namespace MIMSimplifier.Tests
             entry["FirstName"].Value = "per";
             entry["LastName"].Value = "Askeladd";
 
-            var loader = new FileProvRuleLoader("Samples\\pyProvRules.json");
-            List<ProvisionRule> rules = loader.LoadRules();
+            var loader = new FileProvRuleRepo("Samples\\pyProvRules.json");
+            List<ProvisionRule> rules = loader.GetAllRules();
 
             var provRule = rules.FirstOrDefault();
             Assert.IsTrue(provRule.Agent == "TravelPortal MA");
@@ -71,7 +71,7 @@ namespace MIMSimplifier.Tests
                 InitialFlows = new[] { "UpperCaser" }
             };
 
-            var flowRules = new FileRuleLoader("Samples\\pyFlowRules.json").LoadRules();
+            var flowRules = new FileFlowRuleRepo("Samples\\pyFlowRules.json").GetAllRules();
             Rules.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
 
             string script = FuncCreator.GenerateFunction(provRule.Id, "entry", provRule.Condition);
@@ -106,7 +106,7 @@ namespace MIMSimplifier.Tests
                 InitialFlows = new []{"UpperCaser"}
             };
 
-            var flowRules = new FileRuleLoader("Samples\\pyFlowRules.json").LoadRules();
+            var flowRules = new FileFlowRuleRepo("Samples\\pyFlowRules.json").GetAllRules();
             Rules.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
 
             string script = FuncCreator.GenerateFunction(provRule.Id, "entry", provRule.Condition);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.MetadirectoryServices;
-using SimpleMIM.Flow.RuleLoading;
+using SimpleMIM.Flow.Data;
 
 namespace SimpleMIM.Flow
 {
@@ -14,8 +14,8 @@ namespace SimpleMIM.Flow
 
         public void Initialize()
         {
-            var ruleLoader = new FileRuleLoader(@"C:\Config\flowRules.json");
-            _flows = ruleLoader.LoadRules();
+            var ruleLoader = new FileFlowRuleRepo(@"C:\Config\flowRules.json");
+            _flows = ruleLoader.GetAllRules();
         }
 
         public void Terminate()

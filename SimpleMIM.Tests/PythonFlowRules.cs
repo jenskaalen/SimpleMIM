@@ -6,7 +6,7 @@ using Microsoft.MetadirectoryServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MIMSimplifier.Tests.MockTypes;
 using SimpleMIM.Flow;
-using SimpleMIM.Flow.RuleLoading;
+using SimpleMIM.Flow.Data;
 using SimpleMIM.PythonConfiguration.Py;
 
 namespace MIMSimplifier.Tests
@@ -76,8 +76,8 @@ namespace MIMSimplifier.Tests
             entry["FirstName"].Value = "Espen";
             entry["LastName"].Value = "Askeladd";
 
-            var loader = new FileRuleLoader("Samples\\pyFlowRules.json");
-            List<FlowRule> rules = loader.LoadRules();
+            var loader = new FileFlowRuleRepo("Samples\\pyFlowRules.json");
+            List<FlowRule> rules = loader.GetAllRules();
 
             Assert.IsTrue(rules.Any(rule => rule.Name == "UpperCaser"));
             var upperCaseRule = rules.FirstOrDefault(rule => rule.Name == "UpperCaser");

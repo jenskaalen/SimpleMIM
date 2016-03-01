@@ -6,22 +6,22 @@ using System.Text;
 using Newtonsoft.Json;
 using SimpleMIM.PythonConfiguration.Py;
 
-namespace SimpleMIM.Flow.RuleLoading
+namespace SimpleMIM.Flow.Data
 {
-    public class FileRuleLoader : IRuleLoader
+    public class FileFlowRuleRepo : IFlowRuleRepo
     {
         private readonly List<string> _fileNames;
 
-        public FileRuleLoader(string filename) : this(new List<string>(){ filename })
+        public FileFlowRuleRepo(string filename) : this(new List<string>(){ filename })
         {    
         }
 
-        public FileRuleLoader(List<string> fileNames)
+        public FileFlowRuleRepo(List<string> fileNames)
         {
             _fileNames = fileNames;
         }
 
-        public List<FlowRule> LoadRules()
+        public List<FlowRule> GetAllRules()
         {
             var flowRules = new List<FlowRule>();
 
@@ -45,10 +45,9 @@ namespace SimpleMIM.Flow.RuleLoading
             return flowRules;
         }
 
-        public List<FlowRule> LoadRules(List<string> ruleNames)
+        public void SaveRule(FlowRule rule)
         {
-            var flowRules = LoadRules();
-            return flowRules.Where(rule => ruleNames.Any(ruleName => ruleName == rule.Name)).ToList();
+            throw new NotImplementedException();
         }
     }
 }

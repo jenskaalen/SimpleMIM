@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleMIM.Flow;
-using SimpleMIM.Flow.RuleLoading;
-using SimpleMIM.ProvisionExt.ProvisionRuleLoading;
+using SimpleMIM.Flow.Data;
+using SimpleMIM.ProvisionExt.Data;
 
 namespace SimpleMIM.ProvisionExt
 {
@@ -20,8 +20,8 @@ namespace SimpleMIM.ProvisionExt
             {
                 if (_flowRules == null)
                 { 
-                    var fileRuleLoader = new FileRuleLoader(@"C:\Config\flowRules.json");
-                    _flowRules = fileRuleLoader.LoadRules();
+                    var fileRuleLoader = new FileFlowRuleRepo(@"C:\Config\flowRules.json");
+                    _flowRules = fileRuleLoader.GetAllRules();
                 }
 
                 return _flowRules;
@@ -34,8 +34,8 @@ namespace SimpleMIM.ProvisionExt
             {
                 if (_provRules == null)
                 {
-                    var fileProvRuleLoader = new FileProvRuleLoader(@"C:\Config\provRules.json");
-                    _provRules = fileProvRuleLoader.LoadRules();
+                    var fileProvRuleLoader = new FileProvRuleRepo(@"C:\Config\provRules.json");
+                    _provRules = fileProvRuleLoader.GetAllRules();
                 }
 
                 return _provRules;

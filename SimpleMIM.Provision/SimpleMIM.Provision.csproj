@@ -52,6 +52,7 @@
     <Compile Include="AttributeFormatter.cs" />
     <Compile Include="ConfigLoaders\AgentProvisionerLoader.cs" />
     <Compile Include="ConfigLoaders\IAgentProvisionerLoader.cs" />
+    <Compile Include="Data\IFlowRuleRepo.cs" />
     <Compile Include="SimpleAttributeSetter.cs" />
     <Compile Include="Rules\AttributeRule.cs" />
     <Compile Include="Solvers\IRuleSolver.cs" />

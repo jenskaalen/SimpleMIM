@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.MetadirectoryServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MIMSimplifier.Tests.MockTypes;
-using SimpleMIM.Flow;
-using SimpleMIM.Flow.Py;
 using SimpleMIM.Flow.RuleLoading;
 using SimpleMIM.ProvisionExt;
 using SimpleMIM.ProvisionExt.ProvisionRuleLoading;
+using SimpleMIM.PythonConfiguration.Py;
 using RuleType = SimpleMIM.ProvisionExt.RuleType;
 
 namespace MIMSimplifier.Tests

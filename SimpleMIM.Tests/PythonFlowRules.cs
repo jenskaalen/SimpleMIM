@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.MetadirectoryServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MIMSimplifier.Tests.MockTypes;
 using SimpleMIM.Flow;
-using SimpleMIM.Flow.Py;
 using SimpleMIM.Flow.RuleLoading;
+using SimpleMIM.PythonConfiguration.Py;
 
 namespace MIMSimplifier.Tests
 {

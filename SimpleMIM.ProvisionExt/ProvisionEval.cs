@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.MetadirectoryServices;
 using SimpleMIM.Flow;
-using SimpleMIM.Flow.Py;
+using SimpleMIM.PythonConfiguration.Py;
 
 namespace SimpleMIM.ProvisionExt
 {

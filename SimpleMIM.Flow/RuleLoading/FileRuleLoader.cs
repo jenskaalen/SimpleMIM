@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using IronPython.Runtime.Types;
 using Newtonsoft.Json;
-using SimpleMIM.Flow.Py;
+using SimpleMIM.PythonConfiguration.Py;
 
 namespace SimpleMIM.Flow.RuleLoading
 {

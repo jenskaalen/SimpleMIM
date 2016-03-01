@@ -61,6 +61,10 @@
       <Project>{5DB43540-549B-4049-BF6E-70A9FA7C09A2}</Project>
       <Name>SimpleMIM.Flow</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SimpleMIM.PythonConfiguration\SimpleMIM.PythonConfiguration.csproj">
+      <Project>{33D92D77-7EB9-4A62-82C8-674449C3CDC2}</Project>
+      <Name>SimpleMIM.PythonConfiguration</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,7 +1,7 @@
-﻿using Microsoft.Scripting.Hosting;
-using IronPython.Hosting;
+﻿using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 
-namespace SimpleMIM.Flow.Py
+namespace SimpleMIM.PythonConfiguration.Py
 {
     public static class Core
     {
@@ -20,7 +20,7 @@ namespace SimpleMIM.Flow.Py
 
         public static void RegisterFlowScript(string script)
         {
-            if (_init)
+            if (!_init)
                 Init();
 
             _engine.Execute(script, _flowScope);
@@ -28,7 +28,7 @@ namespace SimpleMIM.Flow.Py
 
         public static void RegisterProvisionScript(string script)
         {
-            if (_init)
+            if (!_init)
                 Init();
 
             _engine.Execute(script, _provScope);
@@ -36,7 +36,7 @@ namespace SimpleMIM.Flow.Py
 
         public static dynamic GetFlowFunction(string name)
         {
-            if (_init)
+            if (!_init)
                 Init();
 
             return _flowScope.GetVariable(name);
@@ -44,7 +44,7 @@ namespace SimpleMIM.Flow.Py
 
         public static dynamic GetProvisionFunction(string name)
         {
-            if (_init)
+            if (!_init)
                 Init();
 
             return _provScope.GetVariable(name);

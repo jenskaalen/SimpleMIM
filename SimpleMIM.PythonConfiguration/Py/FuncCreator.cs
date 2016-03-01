@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleMIM.Flow.Py
+namespace SimpleMIM.PythonConfiguration.Py
 {
     public class FuncCreator
     {

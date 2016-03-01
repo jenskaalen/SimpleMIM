@@ -97,6 +97,10 @@
       <Project>{31A3A770-3D08-4737-8025-FA0013EA30B7}</Project>
       <Name>SimpleMIM.Provision</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SimpleMIM.PythonConfiguration\SimpleMIM.PythonConfiguration.csproj">
+      <Project>{33D92D77-7EB9-4A62-82C8-674449C3CDC2}</Project>
+      <Name>SimpleMIM.PythonConfiguration</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Choose>

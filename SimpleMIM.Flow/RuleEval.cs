@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.MetadirectoryServices;
-using SimpleMIM.Flow.Py;
+using SimpleMIM.PythonConfiguration.Py;
 
 namespace SimpleMIM.Flow
 {

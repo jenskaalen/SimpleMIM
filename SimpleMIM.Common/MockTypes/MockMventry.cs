@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.MetadirectoryServices;
-using MIMSimplifier.Tests.MockTypes;
 
-namespace MIMSimplifier.Tests
+namespace SimpleMIM.Common.MockTypes
 {
     public class MockMventry: MVEntry
     {
@@ -26,7 +25,7 @@ namespace MIMSimplifier.Tests
 
         public override AttributeNameEnumerator GetEnumerator()
         {
-            return new AttributeNameEnumMock(_attributes);
+            throw new NotImplementedException();
         }
 
         public override string ToString()

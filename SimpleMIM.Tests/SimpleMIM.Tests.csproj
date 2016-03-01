@@ -71,6 +71,7 @@
     <Compile Include="PythonProvRules.cs" />
     <Compile Include="RuleParseTests.cs" />
     <Compile Include="RuleTests.cs" />
+    <Compile Include="Web\PythonTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -100,6 +101,10 @@
     <ProjectReference Include="..\SimpleMIM.PythonConfiguration\SimpleMIM.PythonConfiguration.csproj">
       <Project>{33D92D77-7EB9-4A62-82C8-674449C3CDC2}</Project>
       <Name>SimpleMIM.PythonConfiguration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleMIM.Web\SimpleMIM.Web.csproj">
+      <Project>{7FBA5A7E-2422-48C4-ADFF-1F880B2C493C}</Project>
+      <Name>SimpleMIM.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -15,6 +15,6 @@ namespace SimpleMIM.ProvisionExt
         public string Condition { get; set; }
         public RuleType RuleType { get; set; }
         public string[] InitialFlows { get; set; }
-
+        public bool Deprovision { get; set; }
     }
 }

@@ -1,0 +1,43 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.top-margin-1 {
+    margin-top: 1em;
+}
+.top-margin-1-5 {
+    margin-top: 1.5em;
+}
+.top-margin-2-5 {
+    margin-top: 2.5em;
+}
+.top-margin-3 {
+    margin-top: 3em;
+}
+
+.bot-margin-1 {
+    margin-bottom: 1em;
+}
+.bot-margin-1-5 {
+    margin-bottom: 1.5em;
+}
+.bot-margin-2-5 {
+    margin-bottom: 2.5em;
+}
+.bot-margin-3 {
+    margin-bottom: 3em;
+}

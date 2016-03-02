@@ -2,7 +2,7 @@
 
 namespace SimpleMIM.Flow.Data
 {
-    interface IFlowRuleRepo
+    public interface IFlowRuleRepo
     {
         List<FlowRule> GetAllRules();
         void SaveRule(FlowRule rule);

@@ -23,7 +23,6 @@ namespace SimpleMIM.Web.API
         public object Test(PythonFunctionTest test)
         {
             var func = Core.GetFlowFunction(test.Name);
-
             var mventryMock = new MockMventry(test.ObjectType);
 
             foreach (var attrib in test.Attribs)

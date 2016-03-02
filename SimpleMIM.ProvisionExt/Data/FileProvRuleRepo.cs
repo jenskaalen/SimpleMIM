@@ -29,7 +29,7 @@ namespace SimpleMIM.ProvisionExt.Data
 
             foreach (ProvisionRule flowRule in flowRules.Where(rule => rule.RuleType == RuleType.Python))
             {
-                string pyFunc = FuncCreator.GenerateFunction(flowRule.Id, "entry", flowRule.Condition);
+                string pyFunc = FuncCreator.GenerateFunction(flowRule.Name, "entry", flowRule.Condition);
                 scriptBuilder.Append(pyFunc);
                 scriptBuilder.Append(Environment.NewLine);
             }

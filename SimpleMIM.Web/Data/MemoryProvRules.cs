@@ -28,7 +28,7 @@ namespace SimpleMIM.Web.Data
 
         public void SaveRule(ProvisionRule rule)
         {
-            var existingRule = _provRules.FirstOrDefault(provRule => provRule.Id == rule.Id);
+            var existingRule = _provRules.FirstOrDefault(provRule => provRule.Name == rule.Name);
 
             if (existingRule != null)
             {

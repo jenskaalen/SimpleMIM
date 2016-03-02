@@ -9,10 +9,10 @@ namespace SimpleMIM.Flow
     public class FlowRule
     {
         public string Name { get; set; }
-        public string Target { get; set; }
+        public string TargetAttribute { get; set; }
         public string Condition { get; set; }
         public string Expression { get; set; }
-        public ExpressionType ExpressionType { get; set; }
+        public ExpressionType RuleType { get; set; }
     }
 
     public enum ExpressionType

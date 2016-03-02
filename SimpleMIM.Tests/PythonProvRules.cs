@@ -26,7 +26,7 @@ namespace MIMSimplifier.Tests
         {
             var provRule = new SimpleMIM.ProvisionExt.ProvisionRule()
             {
-                Id = "nana",
+                Name = "nana",
                 RuleType = RuleType.Python,
                 Agent = "TestAgent",
                 Condition = "entry['FirstName'].Value == per",
@@ -34,10 +34,10 @@ namespace MIMSimplifier.Tests
                 TargetObject = "HRMUser"
             };
 
-            string script = FuncCreator.GenerateFunction(provRule.Id, "entry", provRule.Condition);
+            string script = FuncCreator.GenerateFunction(provRule.Name, "entry", provRule.Condition);
 
             Core.RegisterProvisionScript(script);
-            var func = Core.GetProvisionFunction(provRule.Id);
+            var func = Core.GetProvisionFunction(provRule.Name);
             Assert.IsNotNull(func);
         }
 
@@ -62,7 +62,7 @@ namespace MIMSimplifier.Tests
         {
             var provRule = new SimpleMIM.ProvisionExt.ProvisionRule()
             {
-                Id = "nunu",
+                Name = "nunu",
                 RuleType = RuleType.Python,
                 Agent = "TestAgent",
                 Condition = "entry['FirstName'].Value == 'per'",
@@ -74,10 +74,10 @@ namespace MIMSimplifier.Tests
             var flowRules = new FileFlowRuleRepo("Samples\\pyFlowRules.json").GetAllRules();
             Rules.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
 
-            string script = FuncCreator.GenerateFunction(provRule.Id, "entry", provRule.Condition);
+            string script = FuncCreator.GenerateFunction(provRule.Name, "entry", provRule.Condition);
 
             Core.RegisterProvisionScript(script);
-            var func = Core.GetProvisionFunction(provRule.Id);
+            var func = Core.GetProvisionFunction(provRule.Name);
             Assert.IsNotNull(func);
 
             var mventry = new MockMventry("person");
@@ -97,7 +97,7 @@ namespace MIMSimplifier.Tests
         {
             var provRule = new SimpleMIM.ProvisionExt.ProvisionRule()
             {
-                Id = "nunu",
+                Name = "nunu",
                 RuleType = RuleType.Python,
                 Agent = "TestAgent",
                 Condition = "entry['FirstName'].Value == per",
@@ -109,10 +109,10 @@ namespace MIMSimplifier.Tests
             var flowRules = new FileFlowRuleRepo("Samples\\pyFlowRules.json").GetAllRules();
             Rules.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
 
-            string script = FuncCreator.GenerateFunction(provRule.Id, "entry", provRule.Condition);
+            string script = FuncCreator.GenerateFunction(provRule.Name, "entry", provRule.Condition);
 
             Core.RegisterProvisionScript(script);
-            var func = Core.GetProvisionFunction(provRule.Id);
+            var func = Core.GetProvisionFunction(provRule.Name);
             Assert.IsNotNull(func);
 
             var mventry = new MockMventry();

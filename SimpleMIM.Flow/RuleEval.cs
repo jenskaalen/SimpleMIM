@@ -12,7 +12,7 @@ namespace SimpleMIM.Flow
     {
         public static dynamic GetValue(FlowRule rule, MVEntry entry)
         {
-            if (rule.ExpressionType == ExpressionType.Python)
+            if (rule.RuleType == ExpressionType.Python)
             {
                 var func = Core.GetFlowFunction(rule.Name);
                 return func(entry);
@@ -23,7 +23,7 @@ namespace SimpleMIM.Flow
 
         public static dynamic GetValue(FlowRule rule, CSEntry entry)
         {
-            if (rule.ExpressionType == ExpressionType.Python)
+            if (rule.RuleType == ExpressionType.Python)
             {
                 var func = Core.GetFlowFunction(rule.Name);
                 return func(entry);

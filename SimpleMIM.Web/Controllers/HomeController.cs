@@ -13,6 +13,11 @@ namespace SimpleMIM.Web.Controllers
             return View();
         }
 
+        public ActionResult Provision()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

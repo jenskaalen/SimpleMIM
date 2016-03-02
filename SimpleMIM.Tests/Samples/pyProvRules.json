@@ -1,6 +1,6 @@
 ﻿[
     {
-        "Id":  "TravelPortalPersonProv",
+        "Name":  "TravelPortalPersonProv",
         "Agent": "TravelPortal MA",
         "RuleType": "Python",
       "Condition": "\tif entry['FirstName'].Value == 'per':\n\t\treturn True\n\telse:\n\t\treturn False",

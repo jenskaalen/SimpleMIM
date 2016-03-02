@@ -34,7 +34,7 @@ namespace SimpleMIM.Flow.Data
 
             var scriptBuilder = new StringBuilder();
 
-            foreach (FlowRule flowRule in flowRules.Where(rule => rule.ExpressionType == ExpressionType.Python))
+            foreach (FlowRule flowRule in flowRules.Where(rule => rule.RuleType == ExpressionType.Python))
             {
                 string pyFunc = FuncCreator.GenerateFunction(flowRule.Name, "entry", flowRule.Expression);
                 scriptBuilder.Append(pyFunc);

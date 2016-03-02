@@ -6,14 +6,14 @@ app.controller('flowController', function ($scope, $http) {
     $scope.compiled = false;
     $scope.funcName = "testFlow";
     $scope.flowRule = {
-        Target: "Attribute", Expression: "\tx = entry['FirstName'].Value + ' random text ' + entry['LastName'].Value\n\treturn x",
-        Name: "testRule", ExpressionType: "Python"
+        TargetAttribute: "Attribute", Expression: "x = entry['FirstName'].Value + ' random text ' + entry['LastName'].Value\nreturn x",
+        Name: "testRule", RuleType: "Python"
     };
     
     $scope.createNewRule = function () {
         $scope.flowRule = {
-            Target: "Attribute", Expression: "",
-            Name: "newRuleName", ExpressionType: "Python"
+            TargetAttribute: "Attribute", Expression: "",
+            Name: "newRuleName", RuleType: "Python"
         };
 
         $scope.ruleSaved = false;
@@ -24,10 +24,6 @@ app.controller('flowController', function ($scope, $http) {
     $http.get('/api/Mock/GetMockAttribs').success(function (attribs) {
         $scope.attribs = attribs;
     });
-
-    $scope.jsonify = function() {
-        $scope.escaped = JSON.stringify($scope.flowRule.Expression);
-    }
 
     $scope.compilePython = function() {
         var compilation = { Script: $scope.script, Name: $scope.funcName };
@@ -78,7 +74,6 @@ app.controller('flowController', function ($scope, $http) {
         });
     }
 
-    $scope.jsonify();
     $scope.loadFlowRules();
 
     $(document).delegate('#textbox', 'keydown', function (e) {

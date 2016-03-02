@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -177,6 +181,7 @@
   <ItemGroup>
     <Compile Include="API\FlowRuleController.cs" />
     <Compile Include="API\MockController.cs" />
+    <Compile Include="API\ProvisionRuleController.cs" />
     <Compile Include="API\PythonController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -187,12 +192,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\MemoryProvRules.cs" />
     <Compile Include="Data\RuleRepos.cs" />
     <Compile Include="Data\MemoryFlowRules.cs" />
+    <Compile Include="Data\SqlFlowRuleRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MIMAttribute.cs" />
+    <Compile Include="Models\ProvRuleTest.cs" />
     <Compile Include="Models\PythonFunctionTest.cs" />
     <Compile Include="Models\PythonCompilation.cs" />
     <Compile Include="Models\RuleTest.cs" />
@@ -202,10 +210,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\templates\attributeEditor.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\attributeDirective.js" />
+    <Content Include="Scripts\app\provision.js" />
     <Content Include="Scripts\app\controllers.js" />
     <Content Include="Scripts\app\modules.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -256,6 +267,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Home\Provision.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,6 +288,10 @@
     <ProjectReference Include="..\SimpleMIM.Flow\SimpleMIM.Flow.csproj">
       <Project>{5DB43540-549B-4049-BF6E-70A9FA7C09A2}</Project>
       <Name>SimpleMIM.Flow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleMIM.ProvisionExt\SimpleMIM.ProvisionExt.csproj">
+      <Project>{A0A0EA99-F133-4225-823F-ACFBF265939D}</Project>
+      <Name>SimpleMIM.ProvisionExt</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleMIM.PythonConfiguration\SimpleMIM.PythonConfiguration.csproj">
       <Project>{33D92D77-7EB9-4A62-82C8-674449C3CDC2}</Project>

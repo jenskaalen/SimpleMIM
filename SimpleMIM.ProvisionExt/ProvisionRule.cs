@@ -8,7 +8,7 @@ namespace SimpleMIM.ProvisionExt
 {
     public class ProvisionRule
     {
-        public string Id { get; set; }
+        public string Name { get; set; }
         public string SourceObject { get; set; }
         public string TargetObject { get; set; }
         public string Agent { get; set; }

@@ -48,7 +48,7 @@ namespace SimpleMIM.Flow
             dynamic val = RuleEval.GetValue(flowRule, mventry);
 
             if (val != null)
-                mventry[flowRule.Target].Value = val;
+                mventry[flowRule.TargetAttribute].Value = val;
         }
 
         public void MapAttributesForJoin(string FlowRuleName, CSEntry csentry, ref ValueCollection values)
@@ -66,7 +66,7 @@ namespace SimpleMIM.Flow
             dynamic val = RuleEval.GetValue(flowRule, mventry);
 
             if (val != null)
-                csentry[flowRule.Target].Value = val;
+                csentry[flowRule.TargetAttribute].Value = val;
         }
 
         public DeprovisionAction Deprovision(CSEntry csentry)

@@ -8,11 +8,13 @@ namespace SimpleMIM.Web.Data
 {
     public class RuleRepos
     {
-        private static MemoryFlowRules _flowRules = new MemoryFlowRules();
+        private static MemoryProvRules _provRules = new MemoryProvRules();
 
-        public static MemoryFlowRules FlowRules
+        public static SqlFlowRuleRepository FlowRules { get; } = new SqlFlowRuleRepository();
+
+        public static MemoryProvRules ProvRules
         {
-            get { return _flowRules; }
+            get { return _provRules; }
         }
     }
 }

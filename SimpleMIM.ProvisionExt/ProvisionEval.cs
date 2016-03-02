@@ -16,7 +16,7 @@ namespace SimpleMIM.ProvisionExt
 
             if (rule.RuleType == RuleType.Python)
             {
-                var func = Core.GetProvisionFunction(rule.Id);
+                var func = Core.GetProvisionFunction(rule.Name);
                 return func(entry);
             }
 
@@ -29,7 +29,7 @@ namespace SimpleMIM.ProvisionExt
             {
                 //TODO: handle non existant rule
                 var flowRule = Rules.FlowRules.FirstOrDefault(flow => flow.Name == initialFlow);
-                csentry[flowRule.Target].Value = RuleEval.GetValue(flowRule, mventry);
+                csentry[flowRule.TargetAttribute].Value = RuleEval.GetValue(flowRule, mventry);
             }
         }
     }

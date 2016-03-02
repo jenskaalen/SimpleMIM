@@ -17,7 +17,8 @@ namespace SimpleMIM.PythonConfiguration.Py
             {
                 const string multilineFuncTemplate =
                     "def {0}({1}):\n{2}";
-                return String.Format(multilineFuncTemplate, name, variablesString, expression);
+                return String.Format(multilineFuncTemplate, name, variablesString, expression)
+                    .Replace("\n", "\n\t");
             }
             else
             {

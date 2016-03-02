@@ -10,6 +10,6 @@ namespace SimpleMIM.Web.Models
     public class RuleTest
     {
         public FlowRule FlowRule { get; set; }
-        public List<MIMAttribute> Attributes { get; set; } 
+        public List<MIMAttribute> Attributes { get; set; }
     }
 }

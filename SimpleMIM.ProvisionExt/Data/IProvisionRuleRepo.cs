@@ -2,7 +2,7 @@
 
 namespace SimpleMIM.ProvisionExt.Data
 {
-    interface IProvisionRuleRepo
+    public interface IProvisionRuleRepo
     {
         List<ProvisionRule> GetAllRules();
         void SaveRule(ProvisionRule rule);

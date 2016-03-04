@@ -5,7 +5,7 @@ namespace SimpleMIM.PythonConfiguration.Py
     public class FuncCreator
     {
         /// <summary>
-        /// 
+        /// Generates a python function 
         /// </summary>
         /// <param name="name"></param>
         /// <param name="variablesString">Ex "varA, varB"</param>

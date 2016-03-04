@@ -2,7 +2,7 @@
 
 
 app.controller('flowController', function ($scope, $http) {
-    $scope.objectType = "person";
+    //$scope.objectType = "person";
     $scope.compiled = false;
     $scope.funcName = "testFlow";
     $scope.flowRule = {
@@ -21,8 +21,12 @@ app.controller('flowController', function ($scope, $http) {
 
     $scope.flowRules = [];
 
-    $http.get('/api/Mock/GetMockAttribs').success(function (attribs) {
-        $scope.attribs = attribs;
+    $http.get('/api/Mock/GetMVEntryMock').success(function (mock) {
+        $scope.source = mock;
+    });
+
+    $http.get('/api/Mock/GetMVEntryMock').success(function (mock) {
+        $scope.target = mock;
     });
 
     $scope.compilePython = function() {
@@ -60,7 +64,8 @@ app.controller('flowController', function ($scope, $http) {
     $scope.testFunction = function () {
         
         var test = {
-            Attributes: $scope.attribs,
+            Source: $scope.source,
+            Target: $scope.target,
             FlowRule: $scope.flowRule
         };
 

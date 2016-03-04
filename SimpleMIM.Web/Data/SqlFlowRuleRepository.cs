@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Linq;
 using System.Web.Configuration;
 using Dapper;
@@ -22,7 +23,7 @@ namespace SimpleMIM.Web.Data
 
         public List<FlowRule> GetAllRules()
         {
-            using (var conn = new SqlConnection(ConfigHelper.ConnectionString))
+            using (var conn = new SQLiteConnection(ConfigHelper.ConnectionString))
             {
                 return conn.Query<FlowRule>("select * from FlowRule").ToList();
             }
@@ -30,7 +31,7 @@ namespace SimpleMIM.Web.Data
 
         public void SaveRule(FlowRule rule)
         {
-            using (var conn = new SqlConnection(ConfigHelper.ConnectionString))
+            using (var conn = new SQLiteConnection(ConfigHelper.ConnectionString))
             {
                 var existingRule = conn.Query<FlowRule>("select * from FlowRule where Name = @Name", new { Name = rule.Name }).FirstOrDefault();
 
@@ -48,7 +49,7 @@ namespace SimpleMIM.Web.Data
     {
         public List<ProvisionRule> GetAllRules()
         {
-            using (var conn = new SqlConnection(ConfigHelper.ConnectionString))
+            using (var conn = new SQLiteConnection(ConfigHelper.ConnectionString))
             {
                 //TODO: need to handle InitialFlows
                 return conn.Query<ProvisionRule>("select * from ProvisionRule").ToList();
@@ -57,7 +58,7 @@ namespace SimpleMIM.Web.Data
 
         public void SaveRule(ProvisionRule rule)
         {
-            using (var conn = new SqlConnection(ConfigHelper.ConnectionString))
+            using (var conn = new SQLiteConnection(ConfigHelper.ConnectionString))
             {
                 var existingRule = conn.Query<FlowRule>("select * from ProvisionRule where Name = @Name", new { Name = rule.Name }).FirstOrDefault();
                 

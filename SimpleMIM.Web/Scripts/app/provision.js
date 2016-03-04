@@ -11,14 +11,14 @@ app.controller('provisionController', function ($scope, $http) {
     //public bool Deprovision { get; set; }
 
     $scope.provRule = {
-        SourceObject: "person", Condition: "entry['DepartmentID'].Value == 'FABRIKAM'",
+        SourceObject: "person", Condition: "entry['DepartmentID'].Value == 'Fabrikam'",
         TargetObject: "HRMUser", Agent: "HRM Agent", RuleType: "Python", InitialFlows: []
     };
 
 
-    $scope.loadFlowRules = function () {
-        $http.get('/api/ProvRule/GetAll').success(function (flowRules) {
-            $scope.flowRules = flowRules;
+    $scope.loadprovRules = function () {
+        $http.get('/api/ProvRule/GetAll').success(function (provRules) {
+            $scope.provRules = provRules;
         });
     }
 
@@ -26,6 +26,19 @@ app.controller('provisionController', function ($scope, $http) {
         $scope.attribs = attribs;
     });
 
+    $scope.saveprovRule = function () {
+        $http.post('/api/provRule/Save', $scope.provRule)
+            .success(function () {
+                if ($scope.provRules.indexOf($scope.provRule < 0)) {
+                    $scope.provRules.push($scope.provRule);
+                }
+
+                $scope.ruleSaved = true;
+            })
+            .error(function (result) {
+                alert('couldnt save provRule');
+            });
+    }
 
     $scope.testFunction = function () {
         var test = {
@@ -33,7 +46,7 @@ app.controller('provisionController', function ($scope, $http) {
             ProvisionRule: $scope.provRule
         };
 
-        $http.post('/api/ProvRule/Test', test).then(function success(result) {
+        $http.post('/api/ProvisionRule/Test', test).then(function success(result) {
             $scope.result = result.data;
         }, function error(result) {
             alert('test failed ' + result.data + result.statusText);
@@ -47,7 +60,7 @@ app.controller('provisionController', function ($scope, $http) {
             var end = this.selectionEnd;
 
             $scope.$apply(function () {
-                $scope.flowRule.Expression = [$scope.flowRule.Expression.slice(0, start), '\t', $scope.flowRule.Expression.slice(start)].join('');
+                $scope.provRule.Condition = [$scope.provRule.Condition.slice(0, start), '\t', $scope.provRule.Condition.slice(start)].join('');
                 angular.element(document.getElementById('#textbox')).triggerHandler('change');
             });
 

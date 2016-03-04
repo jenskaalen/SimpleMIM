@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SimpleMIM.PythonConfiguration.Py;
-using SimpleMIM.Web.Models;
 
 namespace MIMSimplifier.Tests.Web
 {
@@ -15,14 +10,15 @@ namespace MIMSimplifier.Tests.Web
         [TestMethod]
         public void PythonCompilation_works()
         {
-            var pyCompile = new PythonCompilation();
-            pyCompile.Script = "2 + 4";
-            pyCompile.Name = "PlzWork";
+            throw new NotImplementedException();
+            //var pyCompile = new PythonCompilation();
+            //pyCompile.Script = "2 + 4";
+            //pyCompile.Name = "PlzWork";
 
-            string func = FuncCreator.GenerateFunction(pyCompile.Name, null, pyCompile.Script);
-            Core.RegisterFlowScript(func);
+            //string func = FuncCreator.GenerateFunction(pyCompile.Name, null, pyCompile.Script);
+            //Core.RegisterFlowScript(func);
 
-            Assert.AreEqual(6, Core.GetFlowFunction("PlzWork")());
+            //Assert.AreEqual(6, Core.GetFlowFunction("PlzWork")());
         }
     }
 }

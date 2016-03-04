@@ -35,16 +35,8 @@ namespace SimpleMIM.Web.API
             var func = FuncCreator.GenerateFunction(dummyId, "entry", test.FlowRule.Expression);
             Core.RegisterFlowScript(func);
 
-
-            var mventryMock = new MockMventry("person");
-
-            foreach (var attrib in test.Attributes)
-            {
-                mventryMock[attrib.Name].Value = attrib.Value;
-            }
-
             var pyFunc = Core.GetFlowFunction(dummyId);
-            return pyFunc(mventryMock);
+            return pyFunc(test.Source, test.Target);
         }
     }
 }

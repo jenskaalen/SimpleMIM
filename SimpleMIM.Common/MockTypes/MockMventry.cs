@@ -3,29 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.MetadirectoryServices;
+using Newtonsoft.Json;
 
 namespace SimpleMIM.Common.MockTypes
 {
-    public class MockMventry: MVEntry
+    [JsonObject]
+    public class MockMventry: MVEntry, IMockEntry
     {
-        private readonly Dictionary<string, MockAttrib> _attributes;
+        public Dictionary<string, MockAttrib> MockAttributes { get; set; }
 
         public MockMventry()
         {
-            _attributes = new Dictionary<string, MockAttrib>();
+            MockAttributes = new Dictionary<string, MockAttrib>();
             ConnectedMAs = new MockMACollection();
         }
 
-        public MockMventry(string objectType)
+        public MockMventry(string objectType): this()
         {
             ObjectType = objectType;
-            _attributes = new Dictionary<string, MockAttrib>();
-            ConnectedMAs = new MockMACollection();
         }
 
         public override AttributeNameEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new AttributeNameEnumMock(MockAttributes);
         }
 
         public override string ToString()
@@ -40,10 +40,10 @@ namespace SimpleMIM.Common.MockTypes
         {
             get
             {
-                if (!_attributes.ContainsKey(attributeName))
-                    _attributes.Add(attributeName, new MockAttrib(attributeName));
+                if (!MockAttributes.ContainsKey(attributeName))
+                    MockAttributes.Add(attributeName, new MockAttrib(attributeName));
 
-                return _attributes[attributeName];
+                return MockAttributes[attributeName];
             }
         }
 
@@ -87,6 +87,8 @@ namespace SimpleMIM.Common.MockTypes
         }
     }
 
+    //internal class CMAEnumerator  
+    [JsonObject]
     public class MockMACollection : ConnectedMACollection
     {
         private List<ConnectedMA> _connectedMas = new List<ConnectedMA>();
@@ -98,7 +100,7 @@ namespace SimpleMIM.Common.MockTypes
 
         public override ConnectedMACollectionEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public override int Count { get; }

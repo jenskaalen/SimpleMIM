@@ -4,13 +4,18 @@ using Microsoft.MetadirectoryServices;
 
 namespace SimpleMIM.Common.MockTypes
 {
-    public class MockCsentry: CSEntry
+    public class MockCsentry: CSEntry, IMockEntry
     {
         private readonly Dictionary<string, MockAttrib> _attributes;
 
         public MockCsentry()
         {
             _attributes = new Dictionary<string, MockAttrib>();
+        }
+
+        public MockCsentry(string objectType): this()
+        {
+            ObjectType = objectType;
         }
 
         public override AttributeNameEnumerator GetEnumerator()

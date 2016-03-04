@@ -30,7 +30,7 @@
             <textarea cols="80" rows="15" ng-trim="false" ng-model="provRule.Condition" id="textbox"></textarea>
 
             <button ng-disabled="" class="btn btn-info" ng-click="testFunction()">Test</button>
-            @*<button ng-disabled="" class="btn btn-success pull-right" ng-click="saveFlowRule()">Save</button>*@
+            <button ng-disabled="" class="btn btn-success pull-right" ng-click="saveprovRule()"> {{ provRules.indexOf(provRule) > -1 ? 'Create' : 'Update' }}</button>
         </div>
 
         <div class="col-xs-5" ng-style="{ 'margin-left': '10px' }">

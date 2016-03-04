@@ -56,13 +56,13 @@
     <Compile Include="Data\FileFlowRuleRepo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SimpleMIM.PythonConfiguration\SimpleMIM.PythonConfiguration.csproj">
       <Project>{33d92d77-7eb9-4a62-82c8-674449c3cdc2}</Project>
       <Name>SimpleMIM.PythonConfiguration</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

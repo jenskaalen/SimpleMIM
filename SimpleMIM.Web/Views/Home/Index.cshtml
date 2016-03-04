@@ -4,11 +4,25 @@
 
 <div ng-controller="flowController">
     <div class="row bot-margin-2 top-margin-1">
-        <div class="col-xs-6">
-            <div class="h3 bot-margin-1">Mock user: {{ objectType }}</div>
+        <div class="col-xs-5">
+            <div class="h3 bot-margin-1">ObjectType: {{ source.ObjectType }}</div>
 
             <form class="form-horizontal">
-                <div class="" ng-repeat="attrib in attribs">
+                <div class="" ng-repeat="attrib in source.MockAttributes">
+
+                    <label for="ruletype" class="col-xs-4 control-label">{{ attrib.Name }}</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" ng-model="attrib.Value" placeholder="Attribute value"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-5">
+            <div class="h3 bot-margin-1">ObjectType: {{ target.ObjectType }}</div>
+
+            <form class="form-horizontal">
+                <div class="" ng-repeat="attrib in target.MockAttributes">
 
                     <label for="ruletype" class="col-xs-4 control-label">{{ attrib.Name }}</label>
                     <div class="col-xs-8">
@@ -17,7 +31,9 @@
                 </div>
             </form>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-xs-2">
             <button class="btn btn-primary pull-right" ng-click="createNewRule()">New</button>
         </div>
@@ -25,6 +41,7 @@
             <select class="form-control" ng-model="flowRule" ng-options="rule.Name for rule in flowRules"></select>
         </div>
     </div>
+
     <form class="form-horizontal">
         <div class="row top-margin-2-5">
             <div class="col-xs-6">

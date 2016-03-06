@@ -11,7 +11,7 @@ namespace SimpleMIM.Web.Models
     public class RuleTest
     {
         public FlowRule FlowRule { get; set; }
-        public IMockEntry Source { get; set; }
-        public IMockEntry Target { get; set; }
+        public MockMventry Source { get; set; }
+        public MockMventry Target { get; set; }
     }
 }

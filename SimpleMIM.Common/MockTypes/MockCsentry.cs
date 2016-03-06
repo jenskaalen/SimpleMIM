@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.MetadirectoryServices;
+using Newtonsoft.Json;
 
 namespace SimpleMIM.Common.MockTypes
 {
+    [JsonObject]
     public class MockCsentry: CSEntry, IMockEntry
     {
         private readonly Dictionary<string, MockAttrib> _attributes;

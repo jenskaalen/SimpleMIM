@@ -13,21 +13,25 @@ namespace SimpleMIM.PythonConfiguration.Py
         /// <returns></returns>
         public static string GenerateFunction(string name, string variablesString, string expression)
         {
-            if (expression.IndexOf("\n", StringComparison.Ordinal) > -1)
-            {
-                const string multilineFuncTemplate =
-                    "def {0}({1}):\n{2}";
-                return String.Format(multilineFuncTemplate, name, variablesString, expression)
-                    .Replace("\n", "\n\t");
-            }
-            else
-            {
-                const string funcTemplate =
-    @"def {0}({1}):
-    return {2}";
+            const string multilineFuncTemplate =
+                "def {0}({1}):\n{2}";
+            return String.Format(multilineFuncTemplate, name, variablesString, expression)
+                .Replace("\n", "\n\t");
+    //        if (expression.IndexOf("\n", StringComparison.Ordinal) > -1)
+    //        {
+    //            const string multilineFuncTemplate =
+    //                "def {0}({1}):\n{2}";
+    //            return String.Format(multilineFuncTemplate, name, variablesString, expression)
+    //                .Replace("\n", "\n\t");
+    //        }
+    //        else
+    //        {
+    //            const string funcTemplate =
+    //@"def {0}({1}):
+    //return {2}";
 
-                return String.Format(funcTemplate, name, variablesString, expression);
-            }
+    //            return String.Format(funcTemplate, name, variablesString, expression);
+    //        }
         }
     }
 }

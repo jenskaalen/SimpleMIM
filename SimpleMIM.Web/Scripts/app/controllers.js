@@ -9,7 +9,9 @@ app.controller('flowController', function ($scope, $http) {
         TargetAttribute: "Attribute", Expression: "x = entry['FirstName'].Value + ' random text ' + entry['LastName'].Value\nreturn x",
         Name: "testRule", RuleType: "Python"
     };
-    
+
+    $scope.resultEntry = {};
+
     $scope.createNewRule = function () {
         $scope.flowRule = {
             TargetAttribute: "Attribute", Expression: "",
@@ -73,7 +75,8 @@ app.controller('flowController', function ($scope, $http) {
             return;
 
         $http.post('/api/FlowRule/Test', test).then(function success(result) {
-            $scope.result = result.data;
+            //$scope.result = result.data;
+            $scope.resultEntry = result.data;
         }, function error(result) {
             alert('test failed ' + result.data + result.statusText);
         });

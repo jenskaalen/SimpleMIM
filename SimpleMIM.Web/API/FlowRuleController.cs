@@ -32,11 +32,12 @@ namespace SimpleMIM.Web.API
         {
             test.FlowRule.Expression = test.FlowRule.Expression.TrimEnd('"').TrimStart('"');
             string dummyId = "testId" + Guid.NewGuid().ToString().Replace("-", "");
-            var func = FuncCreator.GenerateFunction(dummyId, "entry", test.FlowRule.Expression);
+            var func = FuncCreator.GenerateFunction(dummyId, "source, target", test.FlowRule.Expression);
             Core.RegisterFlowScript(func);
 
             var pyFunc = Core.GetFlowFunction(dummyId);
-            return pyFunc(test.Source, test.Target);
+            pyFunc(test.Source, test.Target);
+            return test.Target;
         }
     }
 }

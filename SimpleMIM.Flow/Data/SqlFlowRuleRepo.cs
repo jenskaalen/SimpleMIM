@@ -30,6 +30,14 @@ namespace SimpleMIM.Flow.Data
                         "insert into FlowRule (Name, TargetAttribute, Condition, Expression, RuleType) values (@Name, @TargetAttribute, @Condition, @Expression, @RuleType)",
                         rule);
                 }
+                else
+                {
+                    conn.Execute(
+                        "update FlowRule " +
+                        "set TargetAttribute = @TargetAttribute, Expression = @Expression  " +
+                        "where Name = @Name",
+                        rule);
+                }
             }
         }
     }

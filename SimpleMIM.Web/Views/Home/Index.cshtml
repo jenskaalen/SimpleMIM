@@ -5,45 +5,49 @@
 <div ng-controller="flowController">
     <div class="row">
         <div class="col-xs-6">
-            <div class="top-margin-3">
+            <div class="top-margin-3 row">
                 <div class="col-xs-4">
                     <button class="btn btn-primary pull-right" ng-click="createNewRule()">New</button>
                 </div>
                 <div class="col-xs-8">
-                    <select class="form-control" ng-model="flowRule" ng-options="rule.Name for rule in flowRules"></select>
+                    <select class="form-control" ng-model="flowRule" ng-options="rule.Name for rule in flowRules">
+                        <option value="">-- Create new or update an existing rule --</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="">
+            <div class="row">
                 <form class="form-horizontal">
                     <label for="ruletype" class="col-xs-4 control-label">Name</label>
                     <div class="col-xs-8">
-                        <input class="form-control" ng-model="flowRule.Name" placeholder="Function name" />
+                        <input class="form-control" ng-model="flowRule.Name" placeholder="Function name"/>
                     </div>
                     <label for="ruletype" class="col-xs-4 control-label">Target attribute</label>
                     <div class="col-xs-8">
-                        <input class="form-control" ng-model="flowRule.TargetAttribute" placeholder="Attribute" />
+                        <input class="form-control" ng-model="flowRule.TargetAttribute" placeholder="Attribute"/>
                     </div>
 
                     <label for="ruletype" class="col-xs-4 control-label">RuleType</label>
                     <div class="col-xs-8">
-                        <input id="ruletype" name="ruletype" class="form-control" ng-model="flowRule.RuleType" ng-disabled="true" />
+                        <input id="ruletype" name="ruletype" class="form-control" ng-model="flowRule.RuleType" ng-disabled="true"/>
                     </div>
 
-                    <div class="">
-                        <button ng-disabled="" class="btn btn-info" ng-click="testFunction()">Test</button>
-                        <button ng-disabled="" class="btn btn-success" ng-click="saveFlowRule()">Save</button>
-                    </div>
                 </form>
             </div>
 
-            <div class="">
-                @*ng-style="{'height': '500px', 'width': '600px'}"*@
-                <textarea ng-style="" cols="70" rows="15" ng-trim="false" ng-model="flowRule.Expression" id="textbox"></textarea>
-                @*<button ng-disabled="!flowRule.Name" class="btn btn-success" ng-click="compilePython()">Compile python</button>*@
-            </div>
-            <div ng-class="errorMessage != null ? 'text-danger' : 'text-success'">
-                Result: {{ errorMessage != null ? errorMessage : resultMessage }}
+            <div class="row">
+                <div class="col-xs-12">
+                    <python-editor editor-text="flowRule.Expression"></python-editor>
+
+                    <div>
+                        <button class="btn btn-info" ng-click="testFunction()">Test</button>
+                        <button class="btn btn-success pull-right" ng-click="saveFlowRule()"> {{ flowRules.indexOf(flowRule) > -1 ? 'Create' : 'Update' }}</button>
+                    </div>
+
+                    <div class="top-margin-1-5" ng-class="errorMessage != null ? 'text-danger' : 'text-success'">
+                        Result: {{ errorMessage != null ? errorMessage : resultMessage }}
+                    </div>
+                </div>
             </div>
         </div>
 

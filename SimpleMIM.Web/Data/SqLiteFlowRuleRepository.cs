@@ -67,8 +67,10 @@ namespace SimpleMIM.Web.Data
                     conn.Execute(
                         "insert into ProvisionRule ([Name],[SourceObject],[TargetObject],[Agent],[Condition],[Deprovision],[InitialFlows],[RuleType]) values (@Name, @SourceObject, @TargetObject, @Agent, @Condition, @Deprovision, @InitialFlows, @RuleType)"
                         ,
-                        new { rule.Name, rule.SourceObject, rule.TargetObject, rule.Agent, rule.Condition, rule.Deprovision, InitialFlows = rule.InitialFlows == null ? null : String.Join(";", rule.InitialFlows), rule.RuleType });
+                        new { rule.Name, rule.SourceObject, rule.TargetObject, rule.Agent, rule.Condition, rule.Deprovision, rule.RuleType });
                 }
+
+                //TODO: save initial flows
             }
         }
     }

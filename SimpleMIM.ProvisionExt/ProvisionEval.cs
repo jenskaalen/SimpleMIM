@@ -25,11 +25,12 @@ namespace SimpleMIM.ProvisionExt
 
         public static void ApplyInitialFlows(ProvisionRule rule, CSEntry csentry, MVEntry mventry)
         {
-            foreach (string initialFlow in rule.InitialFlows)
+            if (rule.InitialFlows == null)
+                return;
+
+            foreach (var initialFlow in rule.InitialFlows)
             {
-                //TODO: handle non existant rule
-                var flowRule = Rules.FlowRules.FirstOrDefault(flow => flow.Name == initialFlow);
-                csentry[flowRule.TargetAttribute].Value = RuleEval.GetValue(flowRule, mventry);
+                RuleEval.Execute(initialFlow, mventry, csentry);
             }
         }
     }

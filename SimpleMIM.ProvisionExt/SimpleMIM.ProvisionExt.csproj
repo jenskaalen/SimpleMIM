@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.MetadirectoryServicesEx">
       <HintPath>..\_References\Microsoft.MetadirectoryServicesEx.dll</HintPath>
     </Reference>
@@ -38,6 +42,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,12 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\IProvisionRuleRepo.cs" />
+    <Compile Include="Data\SqlProvRuleRepo.cs" />
     <Compile Include="ProvisionExtension.cs" />
     <Compile Include="ProvisionRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvisionEval.cs" />
     <Compile Include="Data\FileProvRuleRepo.cs" />
-    <Compile Include="Rules.cs" />
+    <Compile Include="RuleFactory.cs" />
     <Compile Include="RuleType.cs" />
   </ItemGroup>
   <ItemGroup>

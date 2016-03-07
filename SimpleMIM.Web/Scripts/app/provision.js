@@ -10,26 +10,32 @@ app.controller('provisionController', function ($scope, $http) {
     //public string[] InitialFlows { get; set; }
     //public bool Deprovision { get; set; }
 
+    $scope.provRules = [];
+
     $scope.provRule = {
-        SourceObject: "person", Condition: "entry['DepartmentID'].Value == 'Fabrikam'",
+        SourceObject: "person", Condition: "return entry['DepartmentID'].Value == 'Fabrikam'",
         TargetObject: "HRMUser", Agent: "HRM Agent", RuleType: "Python", InitialFlows: []
     };
 
+    $scope.createNewRule = function () {
+        $scope.provRule = {
+            SourceObject: "person", Condition: "",
+            TargetObject: "systemUser", Agent: "Test Agent", RuleType: "Python", InitialFlows: []
+        };
 
-    $scope.loadprovRules = function () {
-        $http.get('/api/ProvRule/GetAll').success(function (provRules) {
-            $scope.provRules = provRules;
-        });
+        $scope.ruleSaved = false;
     }
+
 
     $http.get('/api/Mock/GetMVEntryMock').success(function (mventry) {
         $scope.mventry = mventry;
     });
 
     $scope.saveprovRule = function () {
-        $http.post('/api/provRule/Save', $scope.provRule)
+        $http.post('/api/ProvisionRule/Save', $scope.provRule)
             .success(function () {
-                if ($scope.provRules.indexOf($scope.provRule < 0)) {
+
+                if ($scope.provRules.indexOf($scope.provRule) < 0) {
                     $scope.provRules.push($scope.provRule);
                 }
 
@@ -48,26 +54,21 @@ app.controller('provisionController', function ($scope, $http) {
 
         $http.post('/api/ProvisionRule/Test', test).then(function success(result) {
             $scope.result = result.data;
+
+            if ($scope.result !== false && $scope.result !== true) {
+                alert('Test didnt return true or false - it is not a valid provision rule');
+            }
+
         }, function error(result) {
             alert('test failed ' + result.data + result.statusText);
         });
     }
 
+    $scope.loadprovRules = function () {
+        $http.get('/api/ProvisionRule/GetAll').success(function (provRules) {
+            $scope.provRules = provRules;
+        });
+    }
 
-    $(document).delegate('#textbox', 'keydown', function (e) {
-        if (e.keyCode === 9) {
-            var start = this.selectionStart;
-            var end = this.selectionEnd;
-
-            $scope.$apply(function () {
-                $scope.provRule.Condition = [$scope.provRule.Condition.slice(0, start), '\t', $scope.provRule.Condition.slice(start)].join('');
-                angular.element(document.getElementById('#textbox')).triggerHandler('change');
-            });
-
-            $(this).get(0).selectionStart =
-            $(this).get(0).selectionEnd = start + 1;
-
-            return false;
-        }
-    });
+    $scope.loadprovRules();
 });

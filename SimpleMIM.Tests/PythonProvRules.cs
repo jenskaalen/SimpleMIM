@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.MetadirectoryServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MIMSimplifier.Tests.MockTypes;
+using SimpleMIM.Flow;
 using SimpleMIM.Flow.Data;
 using SimpleMIM.ProvisionExt;
 using SimpleMIM.ProvisionExt.Data;
@@ -68,11 +69,11 @@ namespace MIMSimplifier.Tests
                 Condition = "entry['FirstName'].Value == 'per'",
                 SourceObject = "person",
                 TargetObject = "HRMUser",
-                InitialFlows = new[] { "UpperCaser" }
+                InitialFlows = new[] { new FlowRule() { Name = "UpperCaser" } }
             };
 
             var flowRules = new FileFlowRuleRepo("Samples\\pyFlowRules.json").GetAllRules();
-            Rules.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
+            RuleFactory.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
 
             string script = FuncCreator.GenerateFunction(provRule.Name, "entry", provRule.Condition);
 
@@ -103,11 +104,11 @@ namespace MIMSimplifier.Tests
                 Condition = "entry['FirstName'].Value == per",
                 SourceObject = "person",
                 TargetObject = "HRMUser",
-                InitialFlows = new []{"UpperCaser"}
+                InitialFlows = new [] { new FlowRule() {  Name = "UpperCaser" }  }
             };
 
             var flowRules = new FileFlowRuleRepo("Samples\\pyFlowRules.json").GetAllRules();
-            Rules.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
+            RuleFactory.SetRules(new List<ProvisionRule>() { provRule }, flowRules);
 
             string script = FuncCreator.GenerateFunction(provRule.Name, "entry", provRule.Condition);
 

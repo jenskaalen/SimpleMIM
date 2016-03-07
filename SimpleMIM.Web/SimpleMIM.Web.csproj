@@ -224,10 +224,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\templates\entryViewer.html" />
+    <Content Include="Content\templates\pythonEditor.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app\pythonEditor.js" />
     <Content Include="Scripts\app\entryViewer.js" />
     <Content Include="Scripts\app\provision.js" />
     <Content Include="Scripts\app\controllers.js" />

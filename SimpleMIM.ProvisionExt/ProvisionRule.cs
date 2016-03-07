@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleMIM.Flow;
 
 namespace SimpleMIM.ProvisionExt
 {
@@ -14,7 +15,7 @@ namespace SimpleMIM.ProvisionExt
         public string Agent { get; set; }
         public string Condition { get; set; }
         public RuleType RuleType { get; set; }
-        public string[] InitialFlows { get; set; }
+        public FlowRule[] InitialFlows { get; set; }
         public bool Deprovision { get; set; }
     }
 }

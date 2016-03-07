@@ -47,7 +47,7 @@ app.controller('flowController', function ($scope, $http) {
     $scope.saveFlowRule = function() {
         $http.post('/api/FlowRule/Save', $scope.flowRule)
             .success(function () {
-                if ($scope.flowRules.indexOf($scope.flowRule < 0)) {
+                if ($scope.flowRules.indexOf($scope.flowRule) < 0) {
                     $scope.flowRules.push($scope.flowRule);
                 }
 

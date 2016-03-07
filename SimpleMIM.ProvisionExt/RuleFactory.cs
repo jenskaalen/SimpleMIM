@@ -9,10 +9,11 @@ using SimpleMIM.ProvisionExt.Data;
 
 namespace SimpleMIM.ProvisionExt
 {
-    public class Rules
+    public class RuleFactory
     {
         private static List<FlowRule> _flowRules;
         private static List<ProvisionRule> _provRules;
+        
 
         public static List<FlowRule> FlowRules
         {

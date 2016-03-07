@@ -6,17 +6,7 @@
 
     <div class="row bot-margin-2">
         <div class="col-xs-6">
-            <div class="h3 bot-margin-1">Mock user: {{ objectType }}</div>
-
-
-            <div class="row" ng-repeat="attrib in attribs">
-                <div class="col-xs-2">
-                    <div class="pull-right">{{ attrib.Name }}</div>
-                </div>
-                <div class="col-xs-4 pull-left">
-                    <div>{{ attrib.Value }}</div>
-                </div>
-            </div>
+            <entry-viewer entry="mventry" editable="true"></entry-viewer>
         </div>
     </div>
 

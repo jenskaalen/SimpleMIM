@@ -208,7 +208,7 @@
     <Compile Include="Data\MemoryProvRules.cs" />
     <Compile Include="Data\RuleRepos.cs" />
     <Compile Include="Data\MemoryFlowRules.cs" />
-    <Compile Include="Data\SqlFlowRuleRepository.cs" />
+    <Compile Include="Data\SqLiteFlowRuleRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

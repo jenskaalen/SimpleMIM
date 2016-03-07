@@ -22,8 +22,8 @@ app.controller('provisionController', function ($scope, $http) {
         });
     }
 
-    $http.get('/api/Mock/GetMockAttribs').success(function (attribs) {
-        $scope.attribs = attribs;
+    $http.get('/api/Mock/GetMVEntryMock').success(function (mventry) {
+        $scope.mventry = mventry;
     });
 
     $scope.saveprovRule = function () {
@@ -42,7 +42,7 @@ app.controller('provisionController', function ($scope, $http) {
 
     $scope.testFunction = function () {
         var test = {
-            Attributes: $scope.attribs,
+            MVEntry: $scope.mventry,
             ProvisionRule: $scope.provRule
         };
 

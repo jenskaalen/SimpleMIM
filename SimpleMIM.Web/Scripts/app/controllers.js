@@ -43,12 +43,6 @@ app.controller('flowController', function ($scope, $http) {
         });
     }
 
-    $scope.loadFlowRules = function() {
-        $http.get('/api/FlowRule/GetAll').success(function(flowRules) {
-            $scope.flowRules = flowRules;
-        });
-    }
-
     $scope.saveFlowRule = function() {
         $http.post('/api/FlowRule/Save', $scope.flowRule)
             .success(function () {
@@ -82,8 +76,6 @@ app.controller('flowController', function ($scope, $http) {
         });
     }
 
-    $scope.loadFlowRules();
-
     $(document).delegate('#textbox', 'keydown', function (e) {
         //var $this, end, start;
         if (e.keyCode === 9) {
@@ -101,6 +93,14 @@ app.controller('flowController', function ($scope, $http) {
             return false;
         }
     });
+
+    $scope.loadFlowRules = function() {
+        $http.get('/api/FlowRule/GetAll').success(function(flowRules) {
+            $scope.flowRules = flowRules;
+        });
+    }
+
+    $scope.loadFlowRules();
 });
 
 

@@ -33,17 +33,10 @@ namespace SimpleMIM.Web.API
             string dummyId = "testId" + Guid.NewGuid().ToString().Replace("-", "");
             var func = FuncCreator.GenerateFunction(dummyId, "entry", test.ProvisionRule.Condition);
             Core.RegisterFlowScript(func);
-
-
-            var mventryMock = new MockMventry("person");
-
-            foreach (var attrib in test.Attributes)
-            {
-                mventryMock[attrib.Name].Value = attrib.Value;
-            }
+            
 
             var pyFunc = Core.GetFlowFunction(dummyId);
-            return pyFunc(mventryMock);
+            return pyFunc(test.MVEntry);
         }
     }
 }

@@ -9,14 +9,15 @@
             <input class="form-control" ng-disabled="!editable" ng-model="attrib.Value" placeholder="Attribute value"/>
         </div>
     </div>
-    <div class="row" ng-if="editable">
+
+    <div class="row top-margin-1" ng-show="editable">
         <div class="col-xs-12">
             <input class="form-control" placeholder="New attribute name" ng-model="newAttribName"/>
         </div>
-    </div>
-    <div class="row" ng-if="editable">
+
         <div class="col-xs-4">
-            <button ng-disabled="!newAttribName || newAttribName.length < 1 || entry.MockAttributes[newAttribName] != null" ng-click="addNewAttribute(entry, newAttribName)">Add new </button>
+            <button ng-disabled="newAttribName == null || newAttribName.length < 1 || entry.MockAttributes[newAttribName] != null" ng-click="addNewAttribute(entry, newAttribName)">Add new </button>
         </div>
     </div>
+
 </div>

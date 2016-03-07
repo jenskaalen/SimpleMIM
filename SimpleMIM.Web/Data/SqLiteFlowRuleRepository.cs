@@ -18,7 +18,7 @@ namespace SimpleMIM.Web.Data
         public static string ConnectionString => WebConfigurationManager.ConnectionStrings["SimpleMIM"].ConnectionString;
     }
 
-    public class SqlFlowRuleRepository: IFlowRuleRepo
+    public class SqLiteFlowRuleRepository: IFlowRuleRepo
     {
 
         public List<FlowRule> GetAllRules()

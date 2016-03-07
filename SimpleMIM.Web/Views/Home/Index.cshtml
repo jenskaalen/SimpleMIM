@@ -40,8 +40,10 @@
             <div class="">
                 @*ng-style="{'height': '500px', 'width': '600px'}"*@
                 <textarea ng-style="" cols="70" rows="15" ng-trim="false" ng-model="flowRule.Expression" id="textbox"></textarea>
-
                 @*<button ng-disabled="!flowRule.Name" class="btn btn-success" ng-click="compilePython()">Compile python</button>*@
+            </div>
+            <div ng-class="errorMessage != null ? 'text-danger' : 'text-success'">
+                Result: {{ errorMessage != null ? errorMessage : resultMessage }}
             </div>
         </div>
 

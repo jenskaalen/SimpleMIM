@@ -4,9 +4,10 @@
 app.controller('flowController', function ($scope, $http) {
     //$scope.objectType = "person";
     $scope.compiled = false;
+    $scope.errorMessage = null;
     $scope.funcName = "testFlow";
     $scope.flowRule = {
-        TargetAttribute: "Attribute", Expression: "x = entry['FirstName'].Value + ' random text ' + entry['LastName'].Value\nreturn x",
+        TargetAttribute: "Attribute", Expression: "target['DisplayName'].Value = source['FirstName'].Value + ' random text ' + source['LastName'].Value",
         Name: "testRule", RuleType: "Python"
     };
 
@@ -69,10 +70,11 @@ app.controller('flowController', function ($scope, $http) {
             return;
 
         $http.post('/api/FlowRule/Test', test).then(function success(result) {
-            //$scope.result = result.data;
             $scope.resultEntry = result.data;
+            $scope.resultMessage = "Successful test";
+            $scope.errorMessage = null;
         }, function error(result) {
-            alert('test failed ' + result.data + result.statusText);
+            $scope.errorMessage = result.data.ExceptionMessage;
         });
     }
 

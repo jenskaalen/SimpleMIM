@@ -91,6 +91,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SimpleMIM.Common\SimpleMIM.Common.csproj">
+      <Project>{dc698be0-52b6-4790-acb1-592fa59e0317}</Project>
+      <Name>SimpleMIM.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SimpleMIM.Flow\SimpleMIM.Flow.csproj">
       <Project>{5DB43540-549B-4049-BF6E-70A9FA7C09A2}</Project>
       <Name>SimpleMIM.Flow</Name>

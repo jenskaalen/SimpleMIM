@@ -64,9 +64,11 @@
   <ItemGroup>
     <Compile Include="AgentLoaderTests.cs" />
     <Compile Include="AttributeSetting.cs" />
+    <Compile Include="Ecma\BasicCSEntryConverterTests.cs" />
     <Compile Include="MockTypes\MockAttrib.cs" />
     <Compile Include="MockTypes\MockConnectors.cs" />
     <Compile Include="MockTypes\MockCsentry.cs" />
+    <Compile Include="MockTypes\MockCSEntryChange.cs" />
     <Compile Include="MockTypes\MockMA.cs" />
     <Compile Include="MockTypes\MockMventry.cs" />
     <Compile Include="MockTests.cs" />

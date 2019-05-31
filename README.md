@@ -27,8 +27,7 @@ Simply copy all the built dlls into your Extensions-folder.
 The MVProvisioningExtension must be set to SimpleMIM.ProvisionExt.
 The following file must be created: C:\config\provRules.json. 
 
-```
-#!json
+```javascript
 
 [
     {
@@ -57,8 +56,7 @@ In the (advanced) attribute flow, the name of the flow must be equal to the "Nam
 Works for both export and import. Also the specified attributes must be available in csentry (import) or mventry (export). 
 The following file must be created: C:\config\flowRules.json.
 
-```
-#!json
+```javascript
 
 [
     {

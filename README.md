@@ -1,6 +1,6 @@
 # SimpleMIM #
 
-SimpleMIM is a helper framework for defining flow and provision rules without using compiled code. 
+SimpleMIM is a helper framework for Microsoft Identity Manager which lets you define flow and provision rules using python instead of compiled code.
 
 
 ### How it works ###
